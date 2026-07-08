@@ -1,1 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGen Renovation | Ottawa General Contracting & Home Renovations</title>
+<meta name="description" content="NextGen Renovation builds kitchens, bathrooms, basements and full home renovations across Ottawa. Licensed, insured, and built to a fixed-price plan. Book a free in-home consultation.">
 
+<!-- Fonts: Space Grotesk (display), Inter (body), IBM Plex Mono (labels/specs) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     TOKENS
+     ============================================================ */
+  :root{
+    --navy:#14213D;
+    --navy-2:#1E3055;
+    --navy-3:#0D1729;
+    --red:#C8202F;
+    --red-dark:#9C1622;
+    --white:#FFFFFF;
+    --cream:#F7F5F1;
+    --ink:#1B1F27;
+    --steel:#6E7580;
+    --line:rgba(20,33,61,0.12);
+    --line-on-navy:rgba(255,255,255,0.16);
+
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+
+    --container:1200px;
+    --radius:2px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    color:var(--navy);
+    margin:0;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  ul{margin:0; padding:0; list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  :focus-visible{
+    outline:2px solid var(--red);
+    outline-offset:3px;
+  }
+
+  .container{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:2px;
+    background:var(--red);
+    display:inline-block;
+  }
+  .eyebrow--light{color:#F2A6AC;}
+  .eyebrow--light::before{background:#F2A6AC;}
+
+  .section{
+    padding:96px 0;
+  }
+  .section--tight{padding:72px 0;}
+  .section--cream{background:var(--cream);}
+  .section--navy{background:var(--navy); color:#E7EAF2;}
+  .section--navy h2, .section--navy h3{color:var(--white);}
+
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,42px);
+    margin-top:14px;
+  }
+  .section-head p{
+    margin-top:16px;
+    color:var(--steel);
+    font-size:17px;
+  }
+  .section--navy .section-head p{color:#B7C0D6;}
+
+  /* ============================================================
+     SIGNATURE ELEMENT — BEAM & RIVET DIVIDER
+     A structural beam motif marks the seam between sections,
+     like a steel joist reading between two poured sections.
+     ============================================================ */
+  .beam-divider{
+    position:relative;
+    height:34px;
+    background:var(--white);
+  }
+  .beam-divider::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    height:6px;
+    transform:translateY(-50%);
+    background:linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+  }
+  .beam-divider .container{
+    position:relative;
+    height:100%;
+  }
+  .beam-divider .rivet{
+    position:absolute;
+    top:50%;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--white);
+    transform:translateY(-50%);
+    box-shadow:0 0 0 1px var(--red);
+  }
+  .beam-divider--on-cream{background:var(--cream);}
+  .beam-divider--to-navy::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:50%;
+    background:var(--navy);
+  }
+  .beam-divider--from-navy{background:var(--navy);}
+  .beam-divider--from-navy::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; top:0;
+    height:50%;
+    background:var(--navy);
+  }
+
+  /* ============================================================
+     MEDIA / IMAGE PLACEHOLDER SYSTEM
+     Replace files in /images with the same filenames to update.
+     ============================================================ */
+  .media{
+    position:relative;
+    overflow:hidden;
+    background:var(--navy-3);
+  }
+  .media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .media--empty img{display:none;}
+  .media--empty{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      linear-gradient(var(--line-on-navy) 1px, transparent 1px) 0 0/28px 28px,
+      linear-gradient(90deg, var(--line-on-navy) 1px, transparent 1px) 0 0/28px 28px,
+      var(--navy-3);
+  }
+  .media--empty::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1.5px dashed rgba(255,255,255,0.35);
+  }
+  .media--empty::after{
+    content:"Add " attr(data-file);
+    position:relative;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:#B7C0D6;
+    background:var(--navy-3);
+    padding:6px 12px;
+    border:1px solid rgba(255,255,255,0.25);
+  }
+
+  /* ============================================================
+     HEADER
+     ============================================================ */
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:
+      linear-gradient(rgba(13,23,41,0.88), rgba(13,23,41,0.88)),
+      url('images/header-bg.jpg') center / cover no-repeat;
+    background-color:var(--navy-3);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-on-navy);
+  }
+  .site-header .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19px;
+    color:var(--white);
+  }
+  .logo-mark{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+  }
+  .logo small{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    font-weight:500;
+    letter-spacing:0.16em;
+    color:var(--red);
+    text-transform:uppercase;
+  }
+
+  .main-nav{display:flex; align-items:center; gap:34px;}
+  .main-nav a{
+    font-size:14.5px;
+    font-weight:500;
+    color:#D6DBE8;
+    transition:color .2s var(--ease);
+  }
+  .main-nav a:hover{color:var(--white);}
+
+  .header-actions{display:flex; align-items:center; gap:18px;}
+  .header-phone{
+    font-family:var(--font-mono);
+    font-size:14px;
+    color:var(--white);
+    display:none;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14.5px;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    transition:transform .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--red); color:var(--white);}
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-outline-light{border-color:rgba(255,255,255,0.4); color:var(--white);}
+  .btn-outline-light:hover{border-color:var(--white); background:rgba(255,255,255,0.08);}
+  .btn-navy{background:var(--navy); color:var(--white);}
+  .btn-navy:hover{background:var(--navy-2);}
+  .btn-block{width:100%;}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line-on-navy);
+    width:42px;
+    height:42px;
+    color:var(--white);
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    color:var(--white);
+  }
+  .hero .media{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .hero .media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(13,23,41,0.55) 0%, rgba(13,23,41,0.35) 40%, rgba(13,23,41,0.92) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:1;
+    padding-bottom:76px;
+    padding-top:160px;
+    width:100%;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(36px,5.6vw,64px);
+    color:var(--white);
+    margin-top:18px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--red);
+  }
+  .hero-sub{
+    margin-top:20px;
+    font-size:18px;
+    color:#DCE1EE;
+    max-width:520px;
+  }
+  .hero-cta-row{
+    display:flex;
+    gap:14px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .hero-specs{
+    font-family:var(--font-mono);
+    border-left:1.5px solid rgba(255,255,255,0.28);
+    padding-left:22px;
+    display:grid;
+    gap:16px;
+  }
+  .hero-specs .spec-num{
+    display:block;
+    font-size:22px;
+    color:var(--white);
+    font-weight:600;
+  }
+  .hero-specs .spec-label{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#9FAAC4;
+    margin-top:2px;
+  }
+
+  /* ============================================================
+     SERVICES
+     ============================================================ */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--white);
+    padding:34px 30px 30px;
+    transition:background .2s var(--ease);
+  }
+  .service-card:hover{background:var(--cream);}
+  .service-card .service-index{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--red);
+    font-weight:600;
+  }
+  .service-card h3{
+    font-size:20px;
+    margin-top:16px;
+  }
+  .service-card p{
+    margin-top:12px;
+    color:var(--steel);
+    font-size:15px;
+  }
+  .service-card svg{margin-top:20px;}
+
+  /* ============================================================
+     PROCESS
+     ============================================================ */
+  .process-rail{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:0;
+    position:relative;
+  }
+  .process-rail::before{
+    content:"";
+    position:absolute;
+    top:22px;
+    left:0;
+    right:0;
+    height:2px;
+    background:rgba(255,255,255,0.18);
+  }
+  .process-step{
+    position:relative;
+    padding-right:20px;
+  }
+  .process-num{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--red);
+    color:var(--white);
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+  }
+  .process-step h3{
+    font-size:17px;
+    color:var(--white);
+    margin-top:20px;
+  }
+  .process-step p{
+    margin-top:10px;
+    font-size:14.5px;
+    color:#B7C0D6;
+  }
+
+  /* ============================================================
+     PROJECTS
+     ============================================================ */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .project-card{
+    border:1px solid var(--line);
+    background:var(--white);
+  }
+  .project-card .media{
+    aspect-ratio:4/3;
+  }
+  .project-card-body{
+    padding:22px 22px 26px;
+  }
+  .project-tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-weight:600;
+  }
+  .project-card h3{
+    font-size:19px;
+    margin-top:10px;
+  }
+  .project-card p{
+    margin-top:8px;
+    color:var(--steel);
+    font-size:14.5px;
+  }
+
+  /* ============================================================
+     WHY CHOOSE US
+     ============================================================ */
+  .why-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .why-grid .media{
+    aspect-ratio:4/5;
+  }
+  .why-list{
+    display:grid;
+    gap:26px;
+    margin-top:32px;
+  }
+  .why-item{
+    display:flex;
+    gap:18px;
+  }
+  .why-item .check{
+    flex-shrink:0;
+    width:28px;
+    height:28px;
+    background:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .why-item h4{
+    font-size:16.5px;
+    color:var(--navy);
+  }
+  .why-item p{
+    margin-top:6px;
+    font-size:14.5px;
+    color:var(--steel);
+  }
+
+  /* ============================================================
+     TESTIMONIALS
+     ============================================================ */
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .testimonial-card{
+    background:var(--cream);
+    padding:32px 28px;
+    border-top:3px solid var(--red);
+  }
+  .stars{
+    color:var(--red);
+    font-size:14px;
+    letter-spacing:2px;
+  }
+  .testimonial-card p{
+    margin-top:18px;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .testimonial-attr{
+    margin-top:22px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--steel);
+  }
+  .testimonial-attr strong{
+    display:block;
+    font-family:var(--font-body);
+    font-weight:600;
+    color:var(--navy);
+    font-size:14.5px;
+  }
+
+  /* ============================================================
+     QUOTE FORM
+     ============================================================ */
+  .quote-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+  }
+  .quote-info-list{
+    margin-top:28px;
+    display:grid;
+    gap:18px;
+  }
+  .quote-info-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:14.5px;
+    color:#C7CEDF;
+  }
+  .quote-info-item span.k{
+    font-family:var(--font-mono);
+    color:var(--red);
+    font-size:12px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+
+  .quote-form{
+    background:var(--white);
+    padding:38px;
+    color:var(--ink);
+  }
+  .form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .form-field{
+    margin-bottom:18px;
+  }
+  .form-field label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--steel);
+    margin-bottom:8px;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    width:100%;
+    border:1px solid var(--line);
+    padding:13px 14px;
+    font-family:var(--font-body);
+    font-size:14.5px;
+    color:var(--ink);
+    background:var(--white);
+    border-radius:var(--radius);
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus{
+    border-color:var(--navy);
+    outline:2px solid var(--red);
+    outline-offset:1px;
+  }
+  .form-field textarea{resize:vertical; min-height:100px;}
+  .form-note{
+    margin-top:14px;
+    font-size:12.5px;
+    color:var(--steel);
+  }
+  .form-success{
+    display:none;
+    background:var(--cream);
+    border-left:3px solid var(--red);
+    padding:16px 18px;
+    font-size:14.5px;
+    margin-bottom:18px;
+  }
+  .form-success.is-visible{display:block;}
+
+  /* ============================================================
+     FAQ
+     ============================================================ */
+  .faq-list{
+    max-width:820px;
+    border-top:1px solid var(--line);
+  }
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-q{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:22px 4px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    font-family:var(--font-display);
+    font-size:17px;
+    font-weight:600;
+    color:var(--navy);
+  }
+  .faq-q .plus{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    position:relative;
+  }
+  .faq-q .plus::before,
+  .faq-q .plus::after{
+    content:"";
+    position:absolute;
+    background:var(--red);
+    transition:transform .25s var(--ease);
+  }
+  .faq-q .plus::before{
+    top:50%; left:0; right:0; height:2px; transform:translateY(-50%);
+  }
+  .faq-q .plus::after{
+    left:50%; top:0; bottom:0; width:2px; transform:translateX(-50%);
+  }
+  .faq-item.is-open .plus::after{transform:translateX(-50%) rotate(90deg); opacity:0;}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s var(--ease);
+  }
+  .faq-a-inner{
+    padding:0 4px 24px;
+    color:var(--steel);
+    font-size:15px;
+    max-width:640px;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-footer{
+    background:var(--navy-3);
+    color:#8E97AE;
+    padding:64px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+  }
+  .footer-logo{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19px;
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .footer-col h4{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#C7CEDF;
+    margin-bottom:16px;
+  }
+  .footer-col ul{display:grid; gap:11px;}
+  .footer-col a{font-size:14px; transition:color .2s var(--ease);}
+  .footer-col a:hover{color:var(--white);}
+  .footer-bottom{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:12.5px;
+  }
+
+  /* ============================================================
+     WHATSAPP CTA
+     ============================================================ */
+  .whatsapp-fab{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:200;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#25D366;
+    color:var(--white);
+    padding:14px 18px;
+    border-radius:40px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+    font-weight:600;
+    font-size:14px;
+    transition:transform .2s var(--ease);
+  }
+  .whatsapp-fab:hover{transform:translateY(-2px) scale(1.02);}
+  .whatsapp-fab svg{flex-shrink:0;}
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (min-width:960px){
+    .header-phone{display:block;}
+  }
+
+  @media (max-width:960px){
+    .main-nav{display:none;}
+    .nav-toggle{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-specs{
+      border-left:none;
+      border-top:1.5px solid rgba(255,255,255,0.28);
+      padding-left:0;
+      padding-top:20px;
+      grid-auto-flow:column;
+      grid-auto-columns:1fr;
+    }
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .process-rail{grid-template-columns:repeat(3,1fr); row-gap:36px;}
+    .process-rail::before{display:none;}
+    .projects-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:1fr; gap:36px;}
+    .testimonial-grid{grid-template-columns:1fr 1fr;}
+    .quote-grid{grid-template-columns:1fr; gap:40px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  @media (max-width:640px){
+    .section{padding:64px 0;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-rail{grid-template-columns:1fr 1fr;}
+    .projects-grid{grid-template-columns:1fr;}
+    .testimonial-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .quote-form{padding:26px 22px;}
+    .hero-content{padding-top:120px;}
+    .whatsapp-fab span{display:none;}
+    .whatsapp-fab{padding:14px; border-radius:50%;}
+  }
+
+  /* Mobile nav drawer */
+  .mobile-nav{
+    position:fixed;
+    inset:0;
+    background:var(--navy-3);
+    z-index:150;
+    display:none;
+    flex-direction:column;
+    padding:28px 24px;
+  }
+  .mobile-nav.is-open{display:flex;}
+  .mobile-nav-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .mobile-nav a{
+    font-family:var(--font-display);
+    font-size:24px;
+    color:var(--white);
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-nav-links{margin-top:36px;}
+  .mobile-close{
+    background:none; border:1px solid rgba(255,255,255,0.3);
+    width:42px; height:42px; color:var(--white);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="container">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="20" width="32" height="4" fill="#C8202F"/>
+        <rect x="8" y="8" width="6" height="32" fill="#FFFFFF"/>
+        <rect x="26" y="8" width="6" height="32" fill="#FFFFFF"/>
+        <circle cx="11" cy="12" r="1.6" fill="#14213D"/>
+        <circle cx="29" cy="12" r="1.6" fill="#14213D"/>
+      </svg>
+      <span>NextGen Renovation<small>Ottawa General Contracting</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <span class="header-phone">(613) 555-0142</span>
+      <a href="#quote" class="btn btn-primary">Book Free Consultation</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M0 1H18M0 7H18M0 13H18" stroke="white" stroke-width="2"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top">
+    <span class="logo" style="color:#fff;">NextGen Renovation</span>
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="2"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#projects">Projects</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#quote" style="color:#C8202F;">Book Free Consultation →</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="media" data-file="images/hero.jpg">
+    <img src="images/hero.jpg" alt="Recently completed home renovation in an Ottawa neighbourhood" onerror="this.parentElement.classList.add('media--empty')">
+  </div>
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow eyebrow--light">Ottawa &amp; Surrounding Areas</span>
+          <h1>Renovations built like they'll <em>outlast the mortgage.</em></h1>
+          <p class="hero-sub">NextGen Renovation plans, permits, and builds kitchens, bathrooms, basements, and full home renovations across Ottawa — with one project lead, one fixed quote, and a crew that shows up when they say they will.</p>
+          <div class="hero-cta-row">
+            <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+            <a href="#projects" class="btn btn-outline-light">See Recent Projects</a>
+          </div>
+        </div>
+        <div class="hero-specs">
+          <div>
+            <span class="spec-num">12+ yrs</span>
+            <span class="spec-label">Serving Ottawa Homeowners</span>
+          </div>
+          <div>
+            <span class="spec-num">Licensed &amp; Insured</span>
+            <span class="spec-label">Fully Bonded General Contractor</span>
+          </div>
+          <div>
+            <span class="spec-num">Fixed-Price</span>
+            <span class="spec-label">No Surprise Change Orders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What We Build</span>
+      <h2>Renovation services for every part of the house</h2>
+      <p>From a single room refresh to a full gut renovation, every project runs through the same fixed-price process and the same project lead from first walkthrough to final punch list.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-index">01</span>
+        <h3>Kitchen Renovations</h3>
+        <p>Layout changes, custom cabinetry, and finishes designed around how you actually cook and gather.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="4" y="10" width="22" height="16" stroke="#14213D" stroke-width="1.6"/><path d="M4 16H26" stroke="#C8202F" stroke-width="1.6"/><rect x="10" y="4" width="10" height="6" stroke="#14213D" stroke-width="1.6"/></svg>
+      </div>
+
+      <div class="service-card">
+        <span class="service-index">02</span>
+        <h3>Bathroom Renovations</h3>
+        <p>Waterproofing, tile, and fixtures handled to code — from a powder room refresh to a full ensuite rebuild.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="5" y="12" width="20" height="12" rx="1" stroke="#14213D" stroke-width="1.6"/><path d="M9 12V8a3 3 0 0 1 3-3" stroke="#C8202F" stroke-width="1.6"/></svg>
+      </div>
+
+      <div class="service-card">
+        <span class="service-index">03</span>
+        <h3>Basement Development</h3>
+        <p>Legal egress, insulation, and moisture control turned into livable square footage, not just finished drywall.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M4 26V12L15 4L26 12V26" stroke="#14213D" stroke-width="1.6"/><path d="M4 26H26" stroke="#C8202F" stroke-width="1.6"/></svg>
+      </div>
+
+      <div class="service-card">
+        <span class="service-index">04</span>
+        <h3>Full Home Renovations</h3>
+        <p>Multi-room and whole-home projects sequenced with one schedule, so trades don't work around each other.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="5" y="10" width="20" height="16" stroke="#14213D" stroke-width="1.6"/><path d="M5 18H25" stroke="#C8202F" stroke-width="1.6"/><path d="M15 10V26" stroke="#C8202F" stroke-width="1.6"/></svg>
+      </div>
+
+      <div class="service-card">
+        <span class="service-index">05</span>
+        <h3>Additions &amp; Structural Work</h3>
+        <p>Second-storey additions, load-bearing changes, and permitted structural work engineered and inspected.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="6" y="14" width="10" height="12" stroke="#14213D" stroke-width="1.6"/><path d="M16 14L23 8L23 20L16 20" stroke="#C8202F" stroke-width="1.6"/></svg>
+      </div>
+
+      <div class="service-card">
+        <span class="service-index">06</span>
+        <h3>General Contracting</h3>
+        <p>Already have a designer or architect? We'll manage permits, trades, and the build to their drawings.</p>
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="10" stroke="#14213D" stroke-width="1.6"/><path d="M15 9V15L19 18" stroke="#C8202F" stroke-width="1.6"/></svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="beam-divider">
+  <div class="container">
+    <span class="rivet" style="left:8%;"></span>
+    <span class="rivet" style="left:34%;"></span>
+    <span class="rivet" style="left:66%;"></span>
+    <span class="rivet" style="left:92%;"></span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROCESS
+     ============================================================ -->
+<section class="section section--navy" id="process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow eyebrow--light">How We Build</span>
+      <h2>Five stages, one project lead, no guessing</h2>
+      <p>Every renovation moves through the same sequence in order — nothing starts on site until the stage before it is signed off.</p>
+    </div>
+
+    <div class="process-rail">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Consultation</h3>
+        <p>A walkthrough of your home to understand scope, priorities, and budget range.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Design &amp; Estimate</h3>
+        <p>Drawings, material selections, and a fixed-price quote you can hold us to.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Permits &amp; Planning</h3>
+        <p>City permits pulled, trades scheduled, and a written timeline before demo day.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Construction</h3>
+        <p>Your project lead runs daily site coordination and weekly progress updates.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <h3>Final Walkthrough</h3>
+        <p>A room-by-room review, deficiency list closed out, and warranty paperwork handed over.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Recent Work</span>
+      <h2>Featured Ottawa projects</h2>
+      <p>A sample of recent renovations across Ottawa neighbourhoods — replace these three images with your own project photography.</p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="media" data-file="images/project-1.jpg">
+          <img src="images/project-1.jpg" alt="Completed renovation project in Westboro, Ottawa" onerror="this.parentElement.classList.add('media--empty')">
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Westboro · Kitchen</span>
+          <h3>Galley kitchen rebuild</h3>
+          <p>Wall removal opened the kitchen to the dining room; full custom cabinetry and a new island.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="media" data-file="images/project-2.jpg">
+          <img src="images/project-2.jpg" alt="Completed renovation project in Barrhaven, Ottawa" onerror="this.parentElement.classList.add('media--empty')">
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">Barrhaven · Basement</span>
+          <h3>Legal basement suite</h3>
+          <p>Egress window, secondary suite plumbing, and a separate entrance added for rental income.</p>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="media" data-file="images/project-3.jpg">
+          <img src="images/project-3.jpg" alt="Completed renovation project in the Glebe, Ottawa" onerror="this.parentElement.classList.add('media--empty')">
+        </div>
+        <div class="project-card-body">
+          <span class="project-tag">The Glebe · Full Home</span>
+          <h3>Century home renovation</h3>
+          <p>Full mechanical upgrade behind original trim and plaster, plus a new primary ensuite.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="beam-divider">
+  <div class="container">
+    <span class="rivet" style="left:14%;"></span>
+    <span class="rivet" style="left:44%;"></span>
+    <span class="rivet" style="left:76%;"></span>
+  </div>
+</div>
+
+<!-- ============================================================
+     WHY CHOOSE US
+     ============================================================ -->
+<section class="section section--cream" id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="media" data-file="images/kitchen.jpg">
+        <img src="images/kitchen.jpg" alt="Renovated kitchen with navy cabinetry and stone countertops" onerror="this.parentElement.classList.add('media--empty')">
+      </div>
+      <div>
+        <span class="eyebrow">Why Homeowners Choose Us</span>
+        <h2 style="font-size:clamp(26px,3vw,36px); margin-top:14px;">Built to a plan, not a guess</h2>
+        <div class="why-list">
+          <div class="why-item">
+            <span class="check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2"/></svg></span>
+            <div>
+              <h4>Licensed, insured, and bonded</h4>
+              <p>Full WSIB coverage and liability insurance on every job site, every trade.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2"/></svg></span>
+            <div>
+              <h4>One fixed-price quote</h4>
+              <p>Your estimate is the price — material allowances are agreed in writing before demo.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2"/></svg></span>
+            <div>
+              <h4>A dedicated project lead</h4>
+              <p>One point of contact who's on site, not a call centre juggling ten other jobs.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2"/></svg></span>
+            <div>
+              <h4>Ottawa neighbourhood expertise</h4>
+              <p>We know the permitting quirks of Kanata, Barrhaven, the Glebe, and the older core.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <span class="check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5.5L5 9.5L13 1.5" stroke="white" stroke-width="2"/></svg></span>
+            <div>
+              <h4>2-year workmanship warranty</h4>
+              <p>Every project is backed in writing, well past the day we hand you the keys.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Client Reviews</span>
+      <h2>What Ottawa homeowners say</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>Our kitchen was finished within two weeks of the date we were quoted, and the price didn't move once during the project.</p>
+        <div class="testimonial-attr"><strong>Sarah M.</strong>Westboro, Ottawa</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>They handled the permit for our basement egress window without us having to chase anyone at the city.</p>
+        <div class="testimonial-attr"><strong>David R.</strong>Barrhaven, Ottawa</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>Having one project lead the whole way through made a five-month renovation feel manageable.</p>
+        <div class="testimonial-attr"><strong>Priya K.</strong>The Glebe, Ottawa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="beam-divider beam-divider--to-navy">
+  <div class="container">
+    <span class="rivet" style="left:20%;"></span>
+    <span class="rivet" style="left:50%;"></span>
+    <span class="rivet" style="left:80%;"></span>
+  </div>
+</div>
+
+<!-- ============================================================
+     QUOTE FORM
+     ============================================================ -->
+<section class="section section--navy" id="quote">
+  <div class="container">
+    <div class="quote-grid">
+      <div>
+        <span class="eyebrow eyebrow--light">Free In-Home Consultation</span>
+        <h2 style="font-size:clamp(26px,3vw,36px); margin-top:14px;">Tell us about your project</h2>
+        <p style="margin-top:16px; color:#B7C0D6; font-size:16px;">Fill out the form and we'll book a free in-home consultation to walk the space, talk through scope, and follow up with a written estimate.</p>
+
+        <div class="quote-info-list">
+          <div class="quote-info-item"><span class="k">CALL</span> (613) 555-0142</div>
+          <div class="quote-info-item"><span class="k">EMAIL</span> hello@nextgenrenovation.ca</div>
+          <div class="quote-info-item"><span class="k">AREA</span> Ottawa, Kanata, Barrhaven, Nepean &amp; the Glebe</div>
+          <div class="quote-info-item"><span class="k">HOURS</span> Mon–Fri, 8am–6pm</div>
+        </div>
+      </div>
+
+      <div class="quote-form">
+        <div class="form-success" id="formSuccess">Thanks — your request has been sent. We'll be in touch within one business day to book your free consultation.</div>
+
+        <!-- Replace YOUR_FORM_ID with your actual Formspree form ID -->
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+              <label for="neighbourhood">Neighbourhood</label>
+              <input type="text" id="neighbourhood" name="neighbourhood" placeholder="e.g. Westboro">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="project-type">Project type</label>
+              <select id="project-type" name="project_type">
+                <option value="">Select one</option>
+                <option>Kitchen Renovation</option>
+                <option>Bathroom Renovation</option>
+                <option>Basement Development</option>
+                <option>Full Home Renovation</option>
+                <option>Addition / Structural</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="budget">Estimated budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select a range</option>
+                <option>Under $25,000</option>
+                <option>$25,000–$75,000</option>
+                <option>$75,000–$150,000</option>
+                <option>$150,000+</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" placeholder="Tell us about the space and what you're hoping to change."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Request Free Consultation</button>
+          <p class="form-note">This form is connected to a Formspree placeholder — replace YOUR_FORM_ID in the code with your own Formspree form ID to receive submissions.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you handle building permits?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Yes. We pull all required City of Ottawa permits as part of the planning stage, before any construction begins on site.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How long does a typical renovation take?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">A single bathroom typically runs 2–4 weeks, a kitchen 4–8 weeks, and a full home renovation 3–6 months, depending on scope. You'll get a written timeline before we start.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Will the price change once construction starts?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Your quote is fixed based on the agreed scope and material allowances. If you request changes mid-project, we'll price them separately before any work proceeds — no surprise invoices.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you offer financing?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">We can walk you through common renovation financing options during your consultation, including home equity lines of credit and renovation-specific loans.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What areas do you serve?
+          <span class="plus"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">We work across Ottawa, including Kanata, Barrhaven, Nepean, Orleans, the Glebe, and Westboro. Not sure if you're in range? Send us your address and we'll confirm.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg width="30" height="30" viewBox="0 0 40 40" fill="none"><rect x="4" y="20" width="32" height="4" fill="#C8202F"/><rect x="8" y="8" width="6" height="32" fill="#FFFFFF"/><rect x="26" y="8" width="6" height="32" fill="#FFFFFF"/></svg>
+          NextGen Renovation
+        </div>
+        <p style="margin-top:16px; font-size:14px; max-width:280px;">Licensed general contractor serving Ottawa homeowners with fixed-price kitchen, bathroom, basement, and full home renovations.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sitemap</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16135550142">(613) 555-0142</a></li>
+          <li><a href="mailto:hello@nextgenrenovation.ca">hello@nextgenrenovation.ca</a></li>
+          <li><a href="#quote">Request a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Area</h4>
+        <ul>
+          <li><a href="#">Kanata</a></li>
+          <li><a href="#">Barrhaven</a></li>
+          <li><a href="#">Nepean</a></li>
+          <li><a href="#">The Glebe</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NextGen Renovation. All rights reserved.</span>
+      <span>Licensed &amp; Insured General Contractor · Ottawa, ON</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     WHATSAPP CTA
+     ============================================================ -->
+<a class="whatsapp-fab" href="https://wa.me/16135550142?text=Hi%2C%20I%27d%20like%20a%20free%20renovation%20quote" target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.24.66-1.4 1.26-1.94 1.33-.5.07-1.12.1-1.8-.11-.42-.13-.96-.3-1.65-.6-2.9-1.25-4.8-4.18-4.94-4.37-.14-.2-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36h.55c.18 0 .42-.07.65.5.24.58.8 2 .87 2.15.07.14.12.31.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.65.78 1.94.92.29.14.48.21.55.33.07.12.07.68-.17 1.34z"/></svg>
+  <span>WhatsApp Us</span>
+</a>
+
+<script>
+  // Mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileClose = document.getElementById('mobileClose');
+  navToggle.addEventListener('click', () => { mobileNav.classList.add('is-open'); navToggle.setAttribute('aria-expanded','true'); });
+  mobileClose.addEventListener('click', () => { mobileNav.classList.remove('is-open'); navToggle.setAttribute('aria-expanded','false'); });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('is-open')));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('is-open');
+        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded','true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Quote form: AJAX submit to Formspree so we can show an inline success message
+  const quoteForm = document.getElementById('quoteForm');
+  const formSuccess = document.getElementById('formSuccess');
+  quoteForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(quoteForm);
+    fetch(quoteForm.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if(response.ok){
+        formSuccess.classList.add('is-visible');
+        quoteForm.reset();
+        formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        alert('Something went wrong sending your request. Please call or WhatsApp us directly.');
+      }
+    }).catch(() => {
+      alert('Something went wrong sending your request. Please call or WhatsApp us directly.');
+    });
+  });
+</script>
+
+</body>
+</html>
